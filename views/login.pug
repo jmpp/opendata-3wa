@@ -1,0 +1,24 @@
+extends layout.pug
+
+block content
+    <a href="/" class="btn btn-small">&laquo; Retour à l'accueil</a>
+
+    <hr>
+
+    <h1>Connexion</h1>
+
+    <form method="post" action="/login">
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" placeholder="john.doe@example.com">
+        </div>
+        
+        <div class="form-group">
+            <label for="pass">Mot de passe :</label>
+            <input type="password" id="pass" name="pass" placeholder="**********">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn">Se connecter</button>
+        </div>
+    </form>

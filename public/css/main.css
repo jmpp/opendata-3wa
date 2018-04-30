@@ -13,6 +13,10 @@ body {
     margin: 0;
 }
 
+h1, h2, h3 {
+    color: #3bb27c;
+}
+
 .container {
     background-color: #fff;
     max-width: 960px;
@@ -21,4 +25,76 @@ body {
     padding: 1em;
     overflow: auto;
     box-shadow: 0 0 15px #c0c0c0;
+}
+
+/**
+ * Styles pour un bouton
+ */
+
+.btn {
+    display: inline-block;
+    padding: 0.5em 1.4em;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    background: linear-gradient(to bottom, #42b983, #128953);
+}
+
+.btn:hover {
+    color: #fff;
+    background: linear-gradient(to bottom, #42b983 50%, #128953);
+}
+
+.btn:active {
+    background: linear-gradient(to bottom, #128953, #42b983 50%);
+}
+
+.btn:disabled {
+    background: linear-gradient(to bottom, #eeeeee, #d3d3d3);
+    cursor: not-allowed;
+}
+
+.btn.btn-small {
+    padding: 0.15em 0.5em;
+    font-size: 0.9em;
+}
+
+/**
+ * Style pour les formulaires
+ */
+
+form input[type='text'],
+form input[type='search'],
+form input[type='email'],
+form input[type='password'],
+form input[type='date'],
+form input[type='url'],
+form select {
+    padding: 0.5em 0.9em;
+    border-radius: 2px;
+    border: thin solid #c0c0c0;
+    background: linear-gradient(to bottom, #e6e6e6 0%, transparent 20%);
+}
+
+form .form-group {
+    margin-bottom: 1.2em;
+}
+
+form .form-actions {
+    padding-left: 152px;
+}
+
+form label {
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 150px;
+    text-align: right;
+}
+
+hr {
+    margin-top: 1em;
+    border: thin solid #d0d0d0;
+    box-shadow: 0 0.0625rem 0 #e0e0e0;
 }

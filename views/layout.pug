@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +7,20 @@
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,800" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <title>Accueil</title>
+    
+    <title>#{pageTitle} | Opendata Cinémas</title>
 </head>
 <body>
 
 <main class="container">
-    <h1>Bienvenue sur l'application Open Data Cinémas</h1>
+    
+    //- Emplacement du contenu utilisé par les différentes vues .pug
+    block content
 
-    <a href="/login">Se connecter</a> - <a href="/signup">S'inscrire</a>
 </main>
+
+//- Emplacement des potentiels scripts utilisés par les différentes vues .pug
+block scripts
 
 </body>
 </html>
