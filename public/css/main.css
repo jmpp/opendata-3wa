@@ -98,3 +98,15 @@ hr {
     border: thin solid #d0d0d0;
     box-shadow: 0 0.0625rem 0 #e0e0e0;
 }
+
+/**
+ * Alertes
+ */
+
+.alert.alert-danger {
+    margin: 1em;
+    padding: 1em;
+    background-color: #ffdada;
+    box-shadow: 0 4px 8px #dddddd;
+    color: #9a4a4a;
+}

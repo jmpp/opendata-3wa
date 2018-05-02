@@ -7,23 +7,20 @@ block content
 
     <h1>Inscription</h1>
 
-    if (error)
-        <div class="alert alert-danger">#{error}</div>
-
     <form method="post" action="/signup">
         <div class="form-group">
             <label for="lastname">Nom :</label>
-            <input type="text" id="lastname" name="lastname" placeholder="DOE">
+            <input type="text" id="lastname" name="lastname" placeholder="DOE" value="#{user && user.lastname}">
         </div>
         
         <div class="form-group">
             <label for="firstname">Prénom :</label>
-            <input type="text" id="firstname" name="firstname" placeholder="John">
+            <input type="text" id="firstname" name="firstname" placeholder="John" value="#{user && user.firstname}">
         </div>
         
         <div class="form-group">
             <label for="email">Email :</label>
-            <input type="email" id="email" name="email" placeholder="john.doe@example.com">
+            <input type="email" id="email" name="email" placeholder="john.doe@example.com" value="#{user && user.email}">
         </div>
         
         <div class="form-group">
@@ -35,6 +32,9 @@ block content
             <label for="pass_confirmation">Confirmation :</label>
             <input type="password" id="pass_confirmation" name="pass_confirmation" placeholder="**********">
         </div>
+
+        if (error)
+            <div class="alert alert-danger">!{error}</div>
 
         <div class="form-actions">
             <button type="submit" class="btn">S'inscrire</button>
