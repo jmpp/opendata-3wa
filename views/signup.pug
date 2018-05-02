@@ -7,8 +7,8 @@ block content
 
     <h1>Inscription</h1>
 
-    if form_data
-        <pre>#{JSON.stringify(form_data, null, 2)}</pre>
+    if (error)
+        <div class="alert alert-danger">#{error}</div>
 
     <form method="post" action="/signup">
         <div class="form-group">
@@ -18,7 +18,7 @@ block content
         
         <div class="form-group">
             <label for="firstname">Prénom :</label>
-            <input type="password" id="firstname" name="firstname" placeholder="John">
+            <input type="text" id="firstname" name="firstname" placeholder="John">
         </div>
         
         <div class="form-group">
