@@ -1,5 +1,6 @@
 // Inclusion des dépendances (=modules) du projet
 const express = require('express');
+const bodyParser = require('body-parser');
 
 // Création d'une nouvelle application Express.js (c.f. http://expressjs.com/en/starter/hello-world.html)
 const app = express();
@@ -13,6 +14,7 @@ app.set('views', 'views'); // Indique que le dossier /views/ contient les fichie
  */
 
 app.use(express.static('public')); // Middleware pour les fichiers statiques : http://expressjs.com/fr/starter/static-files.html
+app.use(bodyParser.urlencoded({extended: false}));
 
 /**
  * Configuration des ROUTES de l'application Node
@@ -35,6 +37,11 @@ app.get('/login', function(request, response) {
 // Page d'inscription de l'application
 app.get('/signup', function(request, response) {
   response.render('signup', { pageTitle: 'Inscription' });
+});
+
+// Lorsqu'un utilisateur valide le formulaire d'inscription (via la méthode POST)
+app.post('/signup', function(request, response) {
+  response.render('signup', { pageTitle: 'Inscription', form_data : request.body });
 });
 
 

@@ -7,6 +7,9 @@ block content
 
     <h1>Inscription</h1>
 
+    if form_data
+        <pre>#{JSON.stringify(form_data, null, 2)}</pre>
+
     <form method="post" action="/signup">
         <div class="form-group">
             <label for="lastname">Nom :</label>
