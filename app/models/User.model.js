@@ -1,5 +1,6 @@
 // Utilisation du module npm 'mongoose'
 const mongoose = require('mongoose');
+const hash = require('../hash');
 
 // Configuration de l'objet Promise utilisé par mongoose (ici, ce seront celles dans Node.js -> global.Promise)
 mongoose.Promise = global.Promise;
@@ -24,7 +25,8 @@ const UserSchema = mongoose.Schema({
         }
     },
 
-    pass: { type: String, required: [true, 'Le champs "Mot de passe" est requis.'] }
+    salt: { type: String, required: true },
+    hash: { type: String, required: true }
 });
 
 /*
@@ -41,12 +43,14 @@ UserSchema.statics.signup = function(firstname, lastname, email, pass, pass_conf
             if (user)
                 return Promise.reject(new Error('Cette adresse email est déjà utilisée.'));
         })
-        .then(() => {
+        .then(() => hash(pass))
+        .then(({salt, hash}) => {
             return this.create({
                 firstname : firstname,
                 lastname : lastname,
                 email : email,
-                pass : pass
+                salt : salt,
+                hash : hash
             });
         })
         .catch(err => {
