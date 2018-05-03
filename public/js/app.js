@@ -1,5 +1,8 @@
 (function() {
     'use strict';
 
-    console.log('Hello World!');
+    document.body.addEventListener('animationend', event => {
+        const flash = event.target;
+        flash.parentNode.removeChild(flash);
+    });
 })();

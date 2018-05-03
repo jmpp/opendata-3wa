@@ -5,4 +5,9 @@ extends layout.pug
 block content
     <h1>Bienvenue sur l'application Open Data Cinémas</h1>
 
-    <a href="/login" class="btn">Se connecter</a> <a href="/signup" class="btn">S'inscrire</a>
+    <p>OpenData est une application permettant à ses membres de pouvoir chercher et reserver des places de cinéma sur l'ensemble des cinémas en Île-de-France.</p>
+
+    if (user)
+        <p><a href="/search">Cliquez ici pour <strong>Rechercher des films</strong></a></p>
+    else
+        <p><a href="/login">Cliquez ici pour <strong>vous connecter</strong></a></p>

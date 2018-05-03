@@ -1,10 +1,6 @@
 extends layout.pug
 
 block content
-    <a href="/" class="btn btn-small">&laquo; Retour à l'accueil</a>
-
-    <hr>
-
     <h1>Connexion</h1>
 
     <form method="post" action="/login">
@@ -21,4 +17,8 @@ block content
         <div class="form-actions">
             <button type="submit" class="btn">Se connecter</button>
         </div>
+        
+        <h2>Ou</h2>
+
+        <p><a href="/auth/twitter">Se connecter avec Twitter</a></p>
     </form>

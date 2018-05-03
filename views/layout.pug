@@ -12,6 +12,26 @@
 </head>
 <body>
 
+<nav>
+    <ul>
+        <li><a class="brand" href="/">Opendata 3wa</a></li>
+    if user
+        <li><a href="/search" class="btn">Rechercher des places</a></li>
+        <li class="pull-right">Connecté en tant que JM Cléry</li>
+        <li><a href="/logout" class="btn">Se déconnecter</a></li>
+    else
+        <li class="pull-right"><a href="/login" class="btn">Se connecter</a></li>
+        <li><a href="/signup" class="btn">S'inscrire</a></li>
+    </ul>
+</nav>
+
+each messages, kind in flash
+    - if ('error' === kind) kind = 'danger'
+    <div class="alert alert-flash alert-#{kind}">
+        each message in messages
+            | #{message}
+    </div>
+
 <main class="container">
     
     //- Emplacement du contenu utilisé par les différentes vues .pug
@@ -19,6 +39,7 @@
 
 </main>
 
+<script src="js/app.js"></script>
 //- Emplacement des potentiels scripts utilisés par les différentes vues .pug
 block scripts
 

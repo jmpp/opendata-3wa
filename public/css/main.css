@@ -18,6 +18,8 @@ h1, h2, h3 {
 }
 
 .container {
+    position: relative;
+    z-index: 1;
     background-color: #fff;
     max-width: 960px;
     min-height: 100vh;
@@ -103,10 +105,74 @@ hr {
  * Alertes
  */
 
-.alert.alert-danger {
+.alert {
     margin: 1em;
     padding: 1em;
-    background-color: #ffdada;
     box-shadow: 0 4px 8px #dddddd;
-    color: #9a4a4a;
+}
+
+.alert.alert-danger {
+    background-color: #ffdada;
+    box-shadow: 0 4px 8px #ebc2c2;
+}
+
+.alert.alert-success {
+    background-color: #daffda;
+    color: #4a9a4a;
+    box-shadow: 0 4px 8px #c2ebc2;
+}
+
+.alert.alert-flash {
+    margin: -1em 0 0 0;
+    position: relative;
+    z-index: 2;
+    animation: disappear 3s linear forwards;
+    transform-origin: 0 0;
+}
+
+@keyframes disappear {
+    0% { transform: scaleY(1) }
+    90% { transform: scaleY(1) }
+    100% { transform: scaleY(0) }
+}
+
+/**
+ * Navigation
+ */
+
+nav {
+    background-color: #42b983;
+    margin-bottom: 1em;
+    overflow: auto;
+}
+nav ul {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+nav li {
+    margin: 0 0.2rem;
+}
+nav li.pull-right {
+    margin-left: auto;
+}
+nav .brand {
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/**
+ * Liens
+ */
+
+a {
+    color: #4a9a4a;
+}
+a:hover {
+    text-decoration: none;
 }
