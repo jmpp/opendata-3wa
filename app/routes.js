@@ -9,6 +9,20 @@ module.exports = function(app, passport) {
         next();
     });
 
+    // Empêche l'accès aux page de connexion/inscription aux utilisateurs déjà connectés
+    app.use(['/login', '/signup', '/auth/twitter'], (request, response, next) => {
+        if (request.user)
+            return response.redirect('/search');
+        next();
+    });
+
+    // A contrario, empêche l'accès à la page de recherche aux utilisateurs déconnectés
+    app.use('/search', (request, response, next) => {
+        if (!request.user)
+            return response.redirect('/login');
+        next();
+    });
+
     /**
      * Configuration des ROUTES de l'application Node
      * 
@@ -30,7 +44,7 @@ module.exports = function(app, passport) {
 
 
     // Page de connexion de l'application
-    app.get('/login', function (requestuest, response) {
+    app.get('/login', function (request, response) {
         response.render('login', { pageTitle: 'Connexion' });
     });
     // Lorsqu'on tente de se connecter, c'est le middleware de passport qui prend la main, avec la stratégie "locale" (configurée dans ./passport.js )
