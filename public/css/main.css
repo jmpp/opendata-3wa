@@ -70,6 +70,7 @@ h1, h2, h3 {
 form input[type='text'],
 form input[type='search'],
 form input[type='email'],
+form input[type='number'],
 form input[type='password'],
 form input[type='date'],
 form input[type='url'],
@@ -78,6 +79,10 @@ form select {
     border-radius: 2px;
     border: thin solid #c0c0c0;
     background: linear-gradient(to bottom, #e6e6e6 0%, transparent 20%);
+}
+
+form input[type="number"] {
+    max-width: 80px;
 }
 
 form .form-group {
@@ -175,4 +180,16 @@ a {
 }
 a:hover {
     text-decoration: none;
+}
+
+/**
+ * Page de résultats
+ */
+
+#results {
+    margin-top: 1em;
+}
+
+#results table {
+    width: 100%;
 }

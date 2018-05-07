@@ -1,4 +1,5 @@
 const User = require('./models/User.model');
+const CINEMAS_A_PARIS = require('./data/cinemas-a-paris.json');
 
 module.exports = function(app, passport) {
 
@@ -92,5 +93,62 @@ module.exports = function(app, passport) {
     app.get('/search', function (request, response) {
         response.render('search', { pageTitle: 'Recherche' });
     });
+
+    // Reponse en ajax sur la page de recherche
+    app.get('/ajax', function(request, response) {
+
+        console.log(request.query);
+
+        let FILTERED_RESULTS = CINEMAS_A_PARIS;
+
+        // Si le client a envoyé un paramètre pour trier par fauteuils...
+        if (request.query.fauteuils) {
+            let filterByFauteuils = customFilter(
+                request.query.operation_fauteuils,
+                'fauteuils',
+                Number(request.query.fauteuils)
+            );
+            FILTERED_RESULTS = FILTERED_RESULTS.filter(filterByFauteuils);
+        }
+
+        // Si le client a envoyé un paramètre pour trier par écrans...
+        if (request.query.ecrans) {
+            let filterByEcrans = customFilter(
+                request.query.operation_ecrans,
+                'ecrans',
+                Number(request.query.ecrans)
+            );
+            FILTERED_RESULTS = FILTERED_RESULTS.filter(filterByEcrans);
+        }
+
+        // Si le client a envoyé un paramètre pour trier par arrondissement
+        if (request.query.arrondissement) {
+            FILTERED_RESULTS = FILTERED_RESULTS.filter( function(cinema) {
+                return cinema.fields.arrondissement == request.query.arrondissement;
+            } );
+        }
+
+        // Renvoi du tableau final trié pour notre client
+        response.json(FILTERED_RESULTS);
+    });
+
+    function customFilter(operator, field_name, value) {
+        switch (operator) {
+            case '>':
+                return function(cinema) {
+                    return cinema.fields[field_name] > Number(value);
+                };
+            
+            case '<':
+                return function(cinema) {
+                    return cinema.fields[field_name] < Number(value);
+                };
+
+            case '=':
+                return function(cinema) {
+                    return cinema.fields[field_name] == value;
+                };
+        }
+    }
 
 };
